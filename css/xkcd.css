@@ -1,0 +1,12 @@
+fieldset {
+	border: none;
+}
+
+form {
+	border: solid black;
+	padding: 2em;
+}
+
+input {
+	margin: 1em;
+}
