@@ -44,16 +44,25 @@
 			}
 		}
 	}
-	
+
+	# I initialized this variable to be an empty string so that I could set the checkboxes, if they were already checked by a user. This reflects Susan's xkcd example.
+	$addNumber = '';
 	# test to see if input is checked, also have to make sure that key exists
 	if (array_key_exists('add_Number', $_GET) && $_GET['add_Number']== 'on') {
 		$password .= rand(0,9);
+		# I set the checked value in its entirety, since it must be either checked='checked' or non existent
+		$addNumber = 'checked="checked"';
 	}
 
+	# I initialized this variable to be an empty string so that I could set the checkboxes, if they were already checked by a user. This reflects Susan's xkcd example.
+	$addSymbol = '';
 	# test to see if input is checked
 	if (array_key_exists('add_Symbol', $_GET) && $_GET['add_Symbol']== 'on') {
 		$password .= chr(rand(33,44));
+		# I set the checked value in its entirety, since it must be either checked='checked' or non existent
+		$addSymbol = 'checked="checked"';
 	}
+
 
 
 

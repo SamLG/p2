@@ -20,3 +20,4 @@ A xkcd password generator using php and forms.
 * http://php.net/manual/en/function.is-numeric.php figure out if value is numeric
 * http://php.net/manual/en/function.chr.php in order to add a variety of symbols I used ascii and converted to single char strings
 * http://www.ascii-code.com/ ascii table
+* http://stackoverflow.com/questions/13716443/how-to-keep-input-in-fields-after-form-submitted-for-further-update
