@@ -51,6 +51,9 @@
 	}
 
 	# test to see if input is checked
-/*	if (isset($addSymbol)) {
-		$password .= '';
-	}*/
+	if (array_key_exists('add_Symbol', $_POST) && $_POST['add_Symbol']== 'on') {
+		$password .= chr(rand(33,44));
+	}
+
+
+
