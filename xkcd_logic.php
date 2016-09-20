@@ -21,4 +21,4 @@
 		'blueberries'
 	];
 	# initialize $password to empty string
-	$password = '';
+	$password = 'test';
