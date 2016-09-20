@@ -1,4 +1,8 @@
 <?php
+
+	#get data from form
+	var_dump($_POST);
+
 	# initialize $numWords to 1
 	$numWords = 1;
 	# initialize $addNum to FALSE
@@ -22,3 +26,17 @@
 	];
 	# initialize $password to empty string
 	$password = 'test';
+
+/*	for ($i = 1; $i <= $numWords; $i++) {
+		$password .= $wordsList[rand(0,count(($wordsList)-1))];
+	}
+
+	# test to see if input is checked
+	if (isset($addNum)) {
+		$password .= rand(0,9);
+	}
+
+	# test to see if input is checked
+	if (isset($addSymbol)) {
+		$password .= '';
+	}*/

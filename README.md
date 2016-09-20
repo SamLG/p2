@@ -13,4 +13,5 @@ A xkcd password generator using php and forms.
 
 
 ## Outside code
-* 
+* http://php.net/manual/en/function.rand.php
+* http://php.net/manual/en/language.operators.string.php
