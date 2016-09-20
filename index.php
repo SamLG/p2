@@ -20,6 +20,9 @@
 		<label for="number_Words"># of Words</label>
 		<input type="text" name="number_Words" maxlength="1" value="<?php echo $numberWords?>">(Max 9) <em><?php echo $wordError?></em>
 		<br>
+		<label for="chosenSymbol">Choose a separator </label>
+		<input type="text" name="chosenSymbol" maxlength="1">
+		<br>
 		<label for="add_Number">Add a number </label>
 		<input id="add_a_number" type="checkbox" name="add_Number" <?php echo $addNumber ?>>
 		<br>

@@ -50,6 +50,7 @@
 				$lower = '';
 				$camel = '';
 
+				# I originally adjusted the password for case out of the word selection, but moved the adjustment here for more control
 				if (array_key_exists('case', $_GET) && $_GET['case'] == 'make_Camel') {
 					$word = substr_replace($word, strtoupper($word{0}), 0, 1);
 					$camel = 'checked="checked"';
@@ -63,8 +64,8 @@
 					$lower = 'checked="checked"';
 				}
 				$password .= $word;
-				if ($i < $numberWords) {
-					$password .= '-';
+				if ($i < $numberWords && array_key_exists('chosenSymbol', $_GET)) {
+					$password .= $_GET['chosenSymbol'];
 				}
 			}
 		}
