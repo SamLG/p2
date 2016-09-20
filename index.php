@@ -17,14 +17,14 @@
 	<h1>xkcd Password Generator</h1>
 	<h2><?php echo $password; ?></h2>
 	<form action="index.php" method="POST">
-		<label for="numberWords"># of Words</label>
-		<input type="text" name="numberWords" maxlength="1">(Max 9)
+		<label for="number_Words"># of Words</label>
+		<input type="text" name="number_Words" maxlength="1">(Max 9)
 		<br>
-		<label for="addNumber">Add a number </label>
-		<input id="add_a_number" type="checkbox" name="addNumber">
+		<label for="add_Number">Add a number </label>
+		<input id="add_a_number" type="checkbox" name="add_Number">
 		<br>
-		<label for="addSymbol">Add a symbol </label>
-		<input id="add_a_symbol" type="checkbox" name="addSymbol">
+		<label for="add_Symbol">Add a symbol </label>
+		<input id="add_a_symbol" type="checkbox" name="add_Symbol">
 		<br>
 		<input type="submit" value="Submit">
 	</form>

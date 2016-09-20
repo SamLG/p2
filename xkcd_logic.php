@@ -20,29 +20,34 @@
 		'blueberries'
 	];
 	# initialize $password to empty string
-	$password = 'test';
+	$password = '';
+	$numberWords = '';
 
-	$numberWords = $_POST['numberWords'];
+	# loading the page without hitting submit, need to ensure that the key has been created before calling it
+	if (array_key_exists('number_Words', $_POST)) {
+		$numberWords = $_POST['number_Words'];
+	}
 
 	if (is_numeric($numberWords)) {
 		echo "is numeric";
-	}
+		}
 	else {
-		echo "not";
+			echo "not";
 	}
 
 	if ($numberWords != '' && is_numeric($numberWords)) {
-		for ($i = 1; $i <= $_POST['numberWords']; $i++) {
-				$password .= '*';
+		for ($i = 1; $i <= $numberWords; $i++) {
+			# choose random index in wordsList array
+			$password .= $wordsList[rand(0,(count($wordsList)-1))];
+			if ($i < $numberWords) {
+				$password .= '-';
 			}
+		}
 	}
-	// else {
-	// 	# code...
-	// }
-//$wordsList[rand(0,count(($wordsList)-1))]
+	
 	# test to see if input is checked, also have to make sure that key exists
-	if (array_key_exists('addNumber', $_POST) && $_POST['addNumber']== 'on') {
-		$password .= rand(0,9);
+	if (array_key_exists('add_Number', $_POST) && $_POST['add_Number']== 'on') {
+		$password .= rand(0,9) . '-';
 	}
 
 	# test to see if input is checked
