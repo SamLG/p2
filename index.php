@@ -16,7 +16,7 @@
 <body>
 	<h1>xkcd Password Generator</h1>
 	<h2><?php echo $password; ?></h2>
-	<form action="index.php" method="POST">
+	<form action="index.php" method="GET">
 		<label for="number_Words"># of Words</label>
 		<input type="text" name="number_Words" maxlength="1">(Max 9)
 		<br>

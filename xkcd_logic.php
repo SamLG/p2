@@ -2,7 +2,7 @@
 
 	#get data from form
 	echo '<pre>';
-	var_dump($_POST);
+	var_dump($_GET);
 	echo '</pre>';
 
 	$wordsList = [
@@ -24,8 +24,8 @@
 	$numberWords = '';
 
 	# loading the page without hitting submit, need to ensure that the key has been created before calling it
-	if (array_key_exists('number_Words', $_POST)) {
-		$numberWords = $_POST['number_Words'];
+	if (array_key_exists('number_Words', $_GET)) {
+		$numberWords = $_GET['number_Words'];
 	}
 
 	if (is_numeric($numberWords)) {
@@ -46,12 +46,12 @@
 	}
 	
 	# test to see if input is checked, also have to make sure that key exists
-	if (array_key_exists('add_Number', $_POST) && $_POST['add_Number']== 'on') {
-		$password .= rand(0,9) . '-';
+	if (array_key_exists('add_Number', $_GET) && $_GET['add_Number']== 'on') {
+		$password .= rand(0,9);
 	}
 
 	# test to see if input is checked
-	if (array_key_exists('add_Symbol', $_POST) && $_POST['add_Symbol']== 'on') {
+	if (array_key_exists('add_Symbol', $_GET) && $_GET['add_Symbol']== 'on') {
 		$password .= chr(rand(33,44));
 	}
 
