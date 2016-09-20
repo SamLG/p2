@@ -1,15 +1,10 @@
 <?php
 
 	#get data from form
+	echo '<pre>';
 	var_dump($_POST);
+	echo '</pre>';
 
-	# initialize $numWords to 1
-	$numWords = 1;
-	# initialize $addNum to FALSE
-	$addNum = FALSE;
-	# initialize $addSymbol to FALSE
-	$addSymbol = FALSE;
-	# create list of words for password
 	$wordsList = [
 		'apples',
 		'bananas',
@@ -27,16 +22,27 @@
 	# initialize $password to empty string
 	$password = 'test';
 
-/*	for ($i = 1; $i <= $numWords; $i++) {
-		$password .= $wordsList[rand(0,count(($wordsList)-1))];
+	$numberWords = $_POST['numberWords'];
+
+	echo (int)$numberWords;
+
+/*	if (!empty($numberWords) && (int)$numWords > 0) {
+
+	}
+	else {
+		# code...
 	}
 
-	# test to see if input is checked
-	if (isset($addNum)) {
+	for ($i = 1; $i <= ; $i++) {
+		$password .= $wordsList[rand(0,count(($wordsList)-1))];
+	}*/
+
+	# test to see if input is checked, also have to make sure that key exists
+	if (array_key_exists('addNumber', $_POST) && $_POST['addNumber']== 'on') {
 		$password .= rand(0,9);
 	}
 
 	# test to see if input is checked
-	if (isset($addSymbol)) {
+/*	if (isset($addSymbol)) {
 		$password .= '';
 	}*/
