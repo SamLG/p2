@@ -35,12 +35,37 @@
 			echo "not";
 	}
 
-	if ($numberWords != '' && is_numeric($numberWords)) {
-		for ($i = 1; $i <= $numberWords; $i++) {
-			# choose random index in wordsList array
-			$password .= $wordsList[rand(0,(count($wordsList)-1))];
-			if ($i < $numberWords) {
-				$password .= '-';
+	$wordError = '';
+	# make sure that # of words has input before continuing
+	if ($numberWords != '') {
+		# if value is not numeric display an error
+		if (!is_numeric($numberWords)) {
+			$wordError = 'Not a numerical value';
+		}
+		else {
+			for ($i = 1; $i <= $numberWords; $i++) {
+				# choose random index in wordsList array
+				$word = $wordsList[rand(0,(count($wordsList)-1))];
+				$upper = '';
+				$lower = '';
+				$camel = '';
+
+				if (array_key_exists('case', $_GET) && $_GET['case'] == 'make_Camel') {
+					$word = substr_replace($word, strtoupper($word{0}), 0, 1);
+					$camel = 'checked="checked"';
+				}
+				else if (array_key_exists('case', $_GET) && $_GET['case'] == 'make_Upper') {
+					$word = strtoupper($word);
+					$upper = 'checked="checked"';
+				}
+				else if (array_key_exists('case', $_GET) && $_GET['case'] == 'make_Lower') {
+					$word = strtoupper($word);
+					$lower = 'checked="checked"';
+				}
+				$password .= $word;
+				if ($i < $numberWords) {
+					$password .= '-';
+				}
 			}
 		}
 	}
@@ -62,7 +87,3 @@
 		# I set the checked value in its entirety, since it must be either checked='checked' or non existent
 		$addSymbol = 'checked="checked"';
 	}
-
-
-
-
