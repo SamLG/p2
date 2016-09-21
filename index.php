@@ -39,17 +39,17 @@
 					<br>
 					<label for="add_Number">Add a number </label>
 					<input id="numbers" type="checkbox" name="add_Number" <?php echo $addNumber ?> onclick="displayHowManyNumbers()">
-					<fieldset id="number_quantity" style="display: none;">
+					<fieldset id="number_quantity" style="display: <?php echo $viewNumber?>;">
 						<label for="number_Numbers">How many?</label>
-						<input type="text" name="number_Numbers" maxlength="1" value="<?php echo $numbers ?>">(Max 9)
+						<input id="number_Numbers" type="text" name="number_Numbers" maxlength="1" value="<?php echo $numbers ?>">(Max 9)
 					</fieldset>
 					
 					<br>
 					<label for="add_Symbol">Add a symbol </label>
 					<input id="symbols" type="checkbox" name="add_Symbol" <?php echo $addSymbol ?> onclick="displayHowManySymbols()">
-					<fieldset id="symbol_quantity" style="display: none;">
+					<fieldset id="symbol_quantity" style="display: <?php echo $viewSymbol ?>;">
 						<label for="number_Symbols">How many?</label>
-						<input type="text" name="number_Symbols" maxlength="1" value="<?php echo $symbols ?>">(Max 9)
+						<input id="number_Symbols" type="text" name="number_Symbols" maxlength="1" value="<?php echo $symbols ?>">(Max 9)
 					</fieldset>
 					
 					<br>
@@ -59,7 +59,7 @@
 					<label>make all lowercase</label>
 					<input type="radio" name="case" value="make_Lower" <?php echo $lower ?>>
 					<br>
-					<label>make CamelCase</label>
+					<label>make camelCase</label>
 					<input type="radio" name="case" value="make_Camel" <?php echo $camel?>>
 					<br>
 					<input type="submit" name="submit" value="Submit">

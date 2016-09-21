@@ -4,7 +4,9 @@ function displayHowManyNumbers() {
     if (inputChecked.checked == true) {  
       dihmn.style.display = 'inline'; 
     } else { 
-      dihmn.style.display = 'none'; 
+      dihmn.style.display = 'none';
+      document.getElementById('number_Numbers').value = '';
+
     }
 }
 
@@ -15,5 +17,6 @@ function displayHowManySymbols() {
       dihmn.style.display = 'inline'; 
     } else { 
       dihmn.style.display = 'none'; 
+      document.getElementById('number_Symbols').value = '';
     }
 }

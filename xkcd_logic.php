@@ -5,21 +5,7 @@
 	// var_dump($_GET);
 	// echo '</pre>';
 
-	// $filename = 'http://www.paulnoll.com/Books/Clear-English/words-01-02-hundred.html';
-	// $page = file_get_contents($filename);
-	// $page = preg_replace('/\s\s+/', '', $page); 
-	// preg_match_all('/(?:<li>)(.+?)(?:<\/li>)/', $page, $matches);
-	// $file = 'list.txt';
-	// foreach ($matches[0] as $val) {
-	// 		$item = preg_replace('/<li>/', '', $val);
-	// 		$item = preg_replace('/<\/li>/', '', $item);
-
-	// 	    file_put_contents($file, $item . ',', FILE_APPEND);
-	// }
-
-	// $wordsList = explode(",", file_get_contents($file));
-
-		$filename = 'https://en.wikipedia.org/wiki/List_of_animal_names';
+	$filename = 'https://en.wikipedia.org/wiki/List_of_animal_names';
 	$page = file_get_contents($filename);
 	$page = preg_replace('/\s\s+/', '', $page); 
 	preg_match_all('/(?:title=".*">)(.*?)(?:<\/a><\/td>)/', $page, $matches);
@@ -28,6 +14,7 @@
 			$item = preg_replace('/title=".*">/', '', $val);
 			$item = preg_replace('/<\/a><\/td>/', '', $item);
 			$item = str_replace(' ', '', $item);
+			$item = strtolower($item);
 
 		    file_put_contents($file, $item . ',', FILE_APPEND);
 	}
@@ -57,7 +44,9 @@
 	$symb = '';
 	$wordError = '';
 	$addNumber = '';
+	$viewNumber = 'none';
 	$addSymbol = '';
+	$viewSymbol = 'none';
 	$numbers = '';
 	$symbols = '';
 	$submitError = '';
@@ -79,7 +68,7 @@
 				$word = $wordsList[rand(0,(count($wordsList)-1))];
 
 				# I originally adjusted the password for case out of the word selection, but moved the adjustment here for more control
-				if (array_key_exists('case', $_GET) && $_GET['case'] == 'make_Camel') {
+				if (array_key_exists('case', $_GET) && $_GET['case'] == 'make_Camel' && $i > 1) {
 					$word = substr_replace($word, strtoupper($word{0}), 0, 1);
 					$camel = 'checked="checked"';
 				}
@@ -107,6 +96,7 @@
 		$password .= rand(0,9);
 		# I set the checked value in its entirety, since it must be either checked='checked' or non existent
 		$addNumber = 'checked="checked"';
+		$viewNumber = 'inline';
 
 		$numbers = $_GET['number_Numbers'];
 		if ($numbers != '' && is_numeric($numbers) && $numbers > 0) {
@@ -122,6 +112,7 @@
 		$password .= chr(rand(33,44));
 		# I set the checked value in its entirety, since it must be either checked='checked' or non existent
 		$addSymbol = 'checked="checked"';
+		$viewSymbol = 'inline';
 
 		$symbols = $_GET['number_Symbols'];
 		if ($symbols != '' && is_numeric($symbols) && $symbols > 0) {
