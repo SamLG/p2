@@ -27,6 +27,7 @@
 	foreach ($matches[0] as $val) {
 			$item = preg_replace('/title=".*">/', '', $val);
 			$item = preg_replace('/<\/a><\/td>/', '', $item);
+			$item = str_replace(' ', '', $item);
 
 		    file_put_contents($file, $item . ',', FILE_APPEND);
 	}
