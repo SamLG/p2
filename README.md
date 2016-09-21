@@ -24,3 +24,4 @@ A xkcd password generator using php and forms.
 * http://php.net/manual/en/function.strtoupper.php
 * http://php.net/manual/en/function.strtolower.php
 * http://stackoverflow.com/questions/27121727/how-to-extract-complete-html-source-code-and-save-it-in-a-text-file-by-using-php
+* http://stackoverflow.com/questions/27121727/how-to-extract-complete-html-source-code-and-save-it-in-a-text-file-by-using-php

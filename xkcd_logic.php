@@ -1,24 +1,51 @@
 <?php
 
-	// #get data from form
+	#get data from form
 	// echo '<pre>';
 	// var_dump($_GET);
 	// echo '</pre>';
 
-	$wordsList = [
-		'apples',
-		'bananas',
-		'pears',
-		'cherries',
-		'peaches',
-		'strawberries',
-		'kiwis',
-		'oranges',
-		'lemons',
-		'pinneaples',
-		'lychees',
-		'blueberries'
-	];
+	// $filename = 'http://www.paulnoll.com/Books/Clear-English/words-01-02-hundred.html';
+	// $page = file_get_contents($filename);
+	// $page = preg_replace('/\s\s+/', '', $page); 
+	// preg_match_all('/(?:<li>)(.+?)(?:<\/li>)/', $page, $matches);
+	// $file = 'list.txt';
+	// foreach ($matches[0] as $val) {
+	// 		$item = preg_replace('/<li>/', '', $val);
+	// 		$item = preg_replace('/<\/li>/', '', $item);
+
+	// 	    file_put_contents($file, $item . ',', FILE_APPEND);
+	// }
+
+	// $wordsList = explode(",", file_get_contents($file));
+
+		$filename = 'https://en.wikipedia.org/wiki/List_of_animal_names';
+	$page = file_get_contents($filename);
+	$page = preg_replace('/\s\s+/', '', $page); 
+	preg_match_all('/(?:title=".*">)(.*?)(?:<\/a><\/td>)/', $page, $matches);
+	$file = 'list.txt';
+	foreach ($matches[0] as $val) {
+			$item = preg_replace('/title=".*">/', '', $val);
+			$item = preg_replace('/<\/a><\/td>/', '', $item);
+
+		    file_put_contents($file, $item . ',', FILE_APPEND);
+	}
+
+	$wordsList = explode(",", file_get_contents($file));
+	// $wordsList = [
+	// 	'apples',
+	// 	'bananas',
+	// 	'pears',
+	// 	'cherries',
+	// 	'peaches',
+	// 	'strawberries',
+	// 	'kiwis',
+	// 	'oranges',
+	// 	'lemons',
+	// 	'pinneaples',
+	// 	'lychees',
+	// 	'blueberries'
+	// ];
 	# initialize $password to empty string
 	$password = '';
 	$numberWords = '';
@@ -32,6 +59,7 @@
 	$addSymbol = '';
 	$numbers = '';
 	$symbols = '';
+	$submitError = '';
 
 	# loading the page without hitting submit, need to ensure that the key has been created before calling it
 	if (array_key_exists('number_Words', $_GET)) {
@@ -100,4 +128,9 @@
 				$password .= chr(rand(33,44));			
 			}
 		}
+	}
+
+	# make sure that some selections were made after submit
+	if ($password == '' && isset( $_GET['submit'])) {
+		$submitError = '* No Password Selections Were Made *';
 	}

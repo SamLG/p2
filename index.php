@@ -19,12 +19,20 @@
 <body>
 	<main class="container">
 		<div class="row">
-			<div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+			<div class="text-center col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
 				<h1>xkcd Password Generator</h1>
-				<h2><?php echo $password; ?></h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="text-center col-md-12 col-sm-12">
+				<h2><?php echo $submitError ?> <?php echo $password ?></h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
 				<form action="index.php" method="GET">
 					<label for="number_Words"># of Words</label>
-					<input type="text" name="number_Words" maxlength="1" value="<?php echo $numberWords?>" required>(Max 9) <em><?php echo $wordError?></em>
+					<input type="text" name="number_Words" maxlength="1" value="<?php echo $numberWords?>">(Max 9) <em><?php echo $wordError?></em>
 					<br>
 					<label for="chosenSymbol">Choose a separator </label>
 					<input type="text" name="chosenSymbol" maxlength="1" value="<?php echo $symb?>">
@@ -54,7 +62,7 @@
 					<label>make CamelCase</label>
 					<input type="radio" name="case" value="make_Camel" <?php echo $camel?>>
 					<br>
-					<input type="submit" value="Submit">
+					<input type="submit" name="submit" value="Submit">
 				</form>
 			</div>
 		</div>
