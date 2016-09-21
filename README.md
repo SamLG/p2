@@ -12,7 +12,7 @@ A xkcd password generator using php and forms.
 ## Details for teaching team
 
 
-## Outside code
+## Outside code/references
 * http://php.net/manual/en/function.rand.php
 * http://php.net/manual/en/language.operators.string.php
 * http://stackoverflow.com/questions/11213125/what-is-the-php-syntax-to-check-is-not-null-or-an-empty-string I used this reference to figure out how to check for an empty string in php
@@ -24,4 +24,15 @@ A xkcd password generator using php and forms.
 * http://php.net/manual/en/function.strtoupper.php
 * http://php.net/manual/en/function.strtolower.php
 * http://stackoverflow.com/questions/27121727/how-to-extract-complete-html-source-code-and-save-it-in-a-text-file-by-using-php
-* http://stackoverflow.com/questions/27121727/how-to-extract-complete-html-source-code-and-save-it-in-a-text-file-by-using-php
+* http://php.net/manual/en/function.preg-match-all.php
+* http://php.net/manual/en/function.file-get-contents.php
+* http://code.runnable.com/U7El7zcmutFiSWiX/finding-hash-and-mention-tag-in-string-for-php-and-preg_match
+* http://php.net/manual/en/function.file-put-contents.php
+* http://www.php.net/manual/en/function.preg-replace.php
+* http://php.net/manual/en/function.explode.php
+* http://www.w3schools.com/jsref/jsref_isnan.asp
+* http://stackoverflow.com/questions/25876002/php-read-list-from-website-into-array
+* http://regexr.com/
+* https://gist.github.com/susanBuck/a81365a69d3a8649db0b
+* http://php.net/manual/en/function.filesize.php
+* http://php.net/manual/en/function.file-exists.php

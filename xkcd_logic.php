@@ -4,20 +4,24 @@
 	// echo '<pre>';
 	// var_dump($_GET);
 	// echo '</pre>';
-
-	$filename = 'https://en.wikipedia.org/wiki/List_of_animal_names';
-	$page = file_get_contents($filename);
-	$page = preg_replace('/\s\s+/', '', $page); 
-	preg_match_all('/(?:title=".*">)(.*?)(?:<\/a><\/td>)/', $page, $matches);
 	$file = 'list.txt';
-	foreach ($matches[0] as $val) {
-			$item = preg_replace('/title=".*">/', '', $val);
-			$item = preg_replace('/<\/a><\/td>/', '', $item);
-			$item = str_replace(' ', '', $item);
-			$item = strtolower($item);
 
-		    file_put_contents($file, $item . ',', FILE_APPEND);
+	# make sure that I only scrape the website once
+	if (!file_exists('list.txt') or filesize('list.txt') < 0 ) {
+		$filename = 'https://en.wikipedia.org/wiki/List_of_animal_names';
+		$page = file_get_contents($filename);
+		$page = preg_replace('/\s\s+/', '', $page); 
+		preg_match_all('/(?:title=".*">)(.*?)(?:<\/a><\/td>)/', $page, $matches);
+		foreach ($matches[0] as $val) {
+				$item = preg_replace('/title=".*">/', '', $val);
+				$item = preg_replace('/<\/a><\/td>/', '', $item);
+				$item = str_replace(' ', '', $item);
+				$item = strtolower($item);
+
+			    file_put_contents($file, $item . ',', FILE_APPEND);
+		}
 	}
+	
 
 	$wordsList = explode(",", file_get_contents($file));
 	// $wordsList = [
@@ -95,7 +99,7 @@
 	}
 
 
-	# test to see if input is checked, also have to make sure that key exists
+	# test to see if input is checked, also have to make sure that key exists, if checked user is committed to at least one number even if input is 0 or NaN
 	if (array_key_exists('add_Number', $_GET) && $_GET['add_Number']== 'on') {
 		$password .= rand(0,9);
 		# I set the checked value in its entirety, since it must be either checked='checked' or non existent
@@ -116,7 +120,7 @@
 		}
 	}
 
-	# test to see if input is checked
+	# test to see if input is checked, if checked the user is committed to at least one symbol even if there input is 0 or NaN
 	if (array_key_exists('add_Symbol', $_GET) && $_GET['add_Symbol']== 'on') {
 		$password .= chr(rand(33,44));
 		# I set the checked value in its entirety, since it must be either checked='checked' or non existent
