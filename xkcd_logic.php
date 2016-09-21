@@ -42,11 +42,13 @@
 	$lower = '';
 	$camel = '';
 	$symb = '';
-	$wordError = '';
+	$wordError = 'none';
 	$addNumber = '';
 	$viewNumber = 'none';
+	$numberError = 'none';
 	$addSymbol = '';
 	$viewSymbol = 'none';
+	$symbolError = 'none';
 	$numbers = '';
 	$symbols = '';
 	$submitError = '';
@@ -60,7 +62,7 @@
 	if ($numberWords != '') {
 		# if value is not numeric display an error
 		if (!is_numeric($numberWords)) {
-			$wordError = 'Not a numerical value';
+			$wordError = 'inline';
 		}
 		else {
 			for ($i = 1; $i <= $numberWords; $i++) {
@@ -70,6 +72,7 @@
 				# I originally adjusted the password for case out of the word selection, but moved the adjustment here for more control
 				if (array_key_exists('case', $_GET) && $_GET['case'] == 'make_Camel' && $i > 1) {
 					$word = substr_replace($word, strtoupper($word{0}), 0, 1);
+					# the case & symbol values don't persist if there are no words chosen
 					$camel = 'checked="checked"';
 				}
 				else if (array_key_exists('case', $_GET) && $_GET['case'] == 'make_Upper') {
@@ -81,6 +84,7 @@
 					$lower = 'checked="checked"';
 				}
 				$password .= $word;
+				# append symbol to all words but last
 				if ($i < $numberWords && array_key_exists('chosenSymbol', $_GET)) {
 					$symb = $_GET['chosenSymbol'];
 					$password .= $symb;
@@ -99,9 +103,14 @@
 		$viewNumber = 'inline';
 
 		$numbers = $_GET['number_Numbers'];
-		if ($numbers != '' && is_numeric($numbers) && $numbers > 0) {
-			for ($i = 1; $i < $numbers; $i++) {
-				$password .= rand(0,9);				
+		if ($numbers != '') {
+			if(!is_numeric($numbers)) {
+				$numberError = 'inline';
+			}
+			else if (is_numeric($numbers) && $numbers > 0) {
+				for ($i = 1; $i < $numbers; $i++) {
+					$password .= rand(0,9);		
+				}		
 			}
 
 		}
