@@ -21,3 +21,6 @@ A xkcd password generator using php and forms.
 * http://php.net/manual/en/function.chr.php in order to add a variety of symbols I used ascii and converted to single char strings
 * http://www.ascii-code.com/ ascii table
 * http://stackoverflow.com/questions/13716443/how-to-keep-input-in-fields-after-form-submitted-for-further-update
+* http://php.net/manual/en/function.strtoupper.php
+* http://php.net/manual/en/function.strtolower.php
+* http://stackoverflow.com/questions/27121727/how-to-extract-complete-html-source-code-and-save-it-in-a-text-file-by-using-php

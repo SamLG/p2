@@ -1,3 +1,17 @@
+h1, h2 {
+	text-align: center;
+}
+
+h1 {
+	font-weight: bold;
+}
+
+h2 {
+	background-color: #d1e0e0;
+	color: #4d0000;
+	padding: .5em;
+}
+
 fieldset {
 	border: none;
 }
@@ -9,4 +23,8 @@ form {
 
 input {
 	margin: 1em;
+}
+
+em {
+	color: red;
 }
