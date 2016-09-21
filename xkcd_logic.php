@@ -5,13 +5,13 @@
 	// var_dump($_GET);
 	// echo '</pre>';
 	$file = 'list.txt';
-
 	# make sure that I only scrape the website once
-	if (!file_exists('list.txt') or filesize('list.txt') < 0 ) {
+	if (!file_exists('list.txt') or filesize('list.txt') == 0 ) {
 		$filename = 'https://en.wikipedia.org/wiki/List_of_animal_names';
 		$page = file_get_contents($filename);
 		$page = preg_replace('/\s\s+/', '', $page); 
 		preg_match_all('/(?:title=".*">)(.*?)(?:<\/a><\/td>)/', $page, $matches);
+		$file = 'list.txt';
 		foreach ($matches[0] as $val) {
 				$item = preg_replace('/title=".*">/', '', $val);
 				$item = preg_replace('/<\/a><\/td>/', '', $item);
