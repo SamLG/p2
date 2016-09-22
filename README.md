@@ -4,7 +4,7 @@
 <http://p2.samgrise.me/>
 
 ## Description
-A xkcd password generator using php and forms. The features available include: # of words, choice of separator, adding numbers and their quanitity, adding symbols and their quantity, choosing case. The words used in the password are scraped from a website. 
+A xkcd password generator using php and forms, with the words used in the password scraped from a website. The features available include: # of words, choice of separator, adding numbers and their quanitity, adding symbols and their quantity, choosing case. Input values and error messages should persist on submission.
 
 ## Demo
 

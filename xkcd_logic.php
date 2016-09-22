@@ -128,9 +128,14 @@
 		$viewSymbol = 'inline';
 
 		$symbols = $_GET['number_Symbols'];
-		if ($symbols != '' && is_numeric($symbols) && $symbols > 0) {
-			for ($i = 1; $i < $symbols; $i++) {
-				$password .= chr(rand(33,44));			
+		if ($symbols != '') {
+			if(!is_numeric($symbols)) {
+				$symbolError = 'inline';
+			}
+			else if (is_numeric($symbols) && $symbols > 0) {
+				for ($i = 1; $i < $symbols; $i++) {
+					$password .= chr(rand(33,44));			
+				}
 			}
 		}
 	}
