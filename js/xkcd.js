@@ -1,6 +1,6 @@
 function displayHowManyNumbers() {
     var dihmn = document.getElementById('number_quantity');
-    var inputChecked = document.getElementById('numbers');
+    var inputChecked = document.getElementById('add_Number');
 	var ne = document.getElementById('numberError');
     if (inputChecked.checked == true) {  
     	dihmn.style.display = 'inline'; 
@@ -15,7 +15,7 @@ function displayHowManyNumbers() {
 
 function displayHowManySymbols() {
     var dihms = document.getElementById('symbol_quantity');
-    var inputChecked = document.getElementById('symbols');
+    var inputChecked = document.getElementById('add_Symbol');
    	var se = document.getElementById('symbolError');
     if (inputChecked.checked == true) {  
       dihms.style.display = 'inline'; 
