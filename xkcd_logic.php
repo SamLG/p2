@@ -24,37 +24,29 @@
 	
 
 	$wordsList = explode(",", file_get_contents('./list.txt'));
-	// $wordsList = [
-	// 	'apples',
-	// 	'bananas',
-	// 	'pears',
-	// 	'cherries',
-	// 	'peaches',
-	// 	'strawberries',
-	// 	'kiwis',
-	// 	'oranges',
-	// 	'lemons',
-	// 	'pinneaples',
-	// 	'lychees',
-	// 	'blueberries'
-	// ];
+
 	/* initialize $password to message, so that before any submissions the user is indicated
 	   where the password will show up, and so that h2 doesn't start out empty, which causes
 	   a w3 validator error of 'Empty heading' */
 	$password = 'Your password will display here';
 	$numberWords = '';
-	# I initialized these variables to be empty strings so that I could set their values, if they already had input from a user. This reflects Susan's xkcd example.
+	# I initialized these variables to be empty strings so that I could set their values to checked, if they already had input from a user. This reflects Susan's xkcd example.
 	$upper = '';
 	$lower = '';
 	$camel = '';
 	$symb = '';
-	$wordError = 'none';
 	$addNumber = '';
-	$viewNumber = 'none';
-	$numberError = 'none';
 	$addSymbol = '';
+	/*the following initialized variables for changing the display on fieldsets
+	I'm not sure if this would be considered inline css, but it was the only way I saw
+	for allowing server side handling of the fieldset. If a fieldset was revealed before 
+	submission, I wanted it to be visible after submission too*/
+	$viewNumber = 'none';	
 	$viewSymbol = 'none';
+	$numberError = 'none';
+	$wordError = 'none';
 	$symbolError = 'none';
+	# additional initialized variables
 	$numbers = '';
 	$symbols = '';
 	$submitError = '';
@@ -65,13 +57,13 @@
 		$password = '';
 	}
 
-	/* loading the page without hitting submit, need to ensure that the key has been created 
-	   before calling it */
+	# loading the page without hitting submit, need to ensure that isset before calling it 
 	if (isset($_GET['number_Words'])) {
 		$numberWords = $_GET['number_Words'];
 	}
 
-	/* make sure that # of words has input before continuing, user is allowed to not use this feature, so no error if no input */
+	/* make sure that # of words has input before continuing, user is allowed to not use 
+	this feature, so no error if no input */
 	if ($numberWords != '') {
 		# if value is not numeric display an error
 		if (!is_numeric($numberWords) || $numberWords <= 0) {
@@ -92,9 +84,10 @@
 				but moved the adjustment here for more control and also having case and
 				symbol selection in here makes it so that these values only persist if 
 				words are selected */ 
+				# only words other than the first will have their first letter capitalized
 				if (array_key_exists('case', $_GET) && $_GET['case'] == 'make_Camel' && $i > 1) {
 					$word = substr_replace($word, strtoupper($word{0}), 0, 1);
-					# the case & symbol values don't persist if there are no words chosen
+					/* setting checked allows these values to still be selected after submission*/
 					$camel = 'checked="checked"';
 				}
 				else if (array_key_exists('case', $_GET) && $_GET['case'] == 'make_Upper') {
@@ -105,6 +98,7 @@
 					$word = strtolower($word);
 					$lower = 'checked="checked"';
 				}
+				# only after made it past case conditions are words appended to password
 				$password .= $word;
 				# append symbol to all words but last
 				if ($i < $numberWords && isset($_GET['chosenSymbol'])) {
@@ -117,7 +111,7 @@
 	}
 
 
-	# test to see if input is checked, also have to make sure that key exists, if checked user is committed to at least one number even if input is 0 or NaN
+	# test to see if input is checked, also have to make sure that key exists, if checked user is committed to at least one number even if input is 0 or NaN or ''
 	if ( isset($_GET['add_Number'])) {
 		$password .= rand(0,9);
 		# I set the checked value in its entirety, since it must be either checked='checked' or non existent
@@ -135,7 +129,7 @@
 		}
 	}
 
-	# test to see if input is checked, if checked the user is committed to at least one symbol even if there input is 0 or NaN
+	# test to see if input is checked, if checked the user is committed to at least one symbol even if there input is 0 or NaN or ''
 	if (isset($_GET['add_Symbol'])) {
 		$password .= chr(rand(33,44));
 		# I set the checked value in its entirety, since it must be either checked='checked' or non existent

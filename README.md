@@ -7,10 +7,11 @@
 A xkcd password generator using php and forms, with the words used in the password scraped from a website. The features available include: # of words, choice of separator, adding numbers and their quanitity, adding symbols and their quantity, choosing case. Input values and error messages should persist on submission.
 
 ## Demo
-
+https://youtu.be/PNnMNS9l4Os
 
 ## Details for teaching team
-I wasn't sure how detailed you wanted sourcing, so I included pretty much all of the sources I used for figuring out the various php functions and their usage. I did have some issues with the wordscraper that I queried on piazza: I couldn't get my regex expression to grab precisely what I wanted, so I cleaned my matches up after; I set up a condition so that I wouldn't continuously scrape the website for words, but the live server wouldn't allow file writing and was recommended against allowing write priviledges due to security, so the file there is pre loaded with the scrape, locally everything works.
+I wasn't sure how detailed you wanted sourcing, so I included pretty much all of the sources I used for figuring out the various php functions and their usage. I did have some issues with the wordscraper that I queried on piazza: I couldn't get my regex expression to grab precisely what I wanted, so I cleaned my matches up after; I set up a condition so that I wouldn't continuously scrape the website for words, but the live server wouldn't allow file writing and was recommended against allowing write priviledges due to security, so the file there is pre loaded with the scrape, locally everything works. I wanted to note that during my demo my internet slowed down when I was showing case choices, and that the application is not normally slow to respond.
+For code blocks if ( isset($_GET['add_Number'])){} if (isset($_GET['add_Symbol'])){} although they were similar the differences were dispersed enough, that I felt they didn't warrant getting turned into functions.
 
 ## Outside code
 * Bootstrap: http://getbootstrap.com/css/#overview
