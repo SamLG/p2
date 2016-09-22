@@ -16,6 +16,7 @@ I wasn't sure how detailed you wanted sourcing, so I included pretty much all of
 * Bootstrap: http://getbootstrap.com/css/#overview
 * Bootstrap cdn: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css
 * Word list: https://en.wikipedia.org/wiki/List_of_animal_names
+* images are from Word free clipart
 
 ## All of the following are references, majority from php.net for figuring out functions and function usage 
 * Reference to figure out how to check for an empty string in php: http://stackoverflow.com/questions/11213125/what-is-the-php-syntax-to-check-is-not-null-or-an-empty-string 

@@ -19,6 +19,20 @@
 <body>
 	<main class="container">
 		<div class="row">
+			<div class="animal col-md-3 col-sm-3">
+				<img src="images/duck.jpg" alt="duck">
+			</div>
+			<div class="animal col-md-3 col-sm-3">
+				<img src="images/kitten.jpg" alt="kitten">
+			</div>
+			<div class="animal col-md-3 col-sm-3">
+				<img src="images/sheep.jpg" alt="sheep">
+			</div>
+			<div class="animal col-md-3 col-sm-3"> 
+				<img src="images/bunny.jpg" alt="bunny">				
+			</div>
+		</div>
+		<div class="row">
 			<div class="text-center col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
 				<h1>xkcd Password Generator</h1>
 			</div>
