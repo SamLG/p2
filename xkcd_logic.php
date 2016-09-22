@@ -67,14 +67,14 @@
 
 	/* loading the page without hitting submit, need to ensure that the key has been created 
 	   before calling it */
-	if (array_key_exists('number_Words', $_GET)) {
+	if (isset($_GET['number_Words'])) {
 		$numberWords = $_GET['number_Words'];
 	}
 
-	# make sure that # of words has input before continuing
+	/* make sure that # of words has input before continuing, user is allowed to not use this feature, so no error if no input */
 	if ($numberWords != '') {
 		# if value is not numeric display an error
-		if (!is_numeric($numberWords)) {
+		if (!is_numeric($numberWords) || $numberWords <= 0) {
 			$wordError = 'inline';
 		}
 		else {
@@ -88,7 +88,10 @@
 					$word = $wordsList[rand(0,(count($wordsList)-1))];
 				}
 				
-				# I originally adjusted the password for case out of the word selection, but moved the adjustment here for more control
+				/* I originally adjusted the password for case out of the word selection, 
+				but moved the adjustment here for more control and also having case and
+				symbol selection in here makes it so that these values only persist if 
+				words are selected */ 
 				if (array_key_exists('case', $_GET) && $_GET['case'] == 'make_Camel' && $i > 1) {
 					$word = substr_replace($word, strtoupper($word{0}), 0, 1);
 					# the case & symbol values don't persist if there are no words chosen
@@ -104,7 +107,7 @@
 				}
 				$password .= $word;
 				# append symbol to all words but last
-				if ($i < $numberWords && array_key_exists('chosenSymbol', $_GET)) {
+				if ($i < $numberWords && isset($_GET['chosenSymbol'])) {
 					$symb = $_GET['chosenSymbol'];
 					$password .= $symb;
 
@@ -115,42 +118,37 @@
 
 
 	# test to see if input is checked, also have to make sure that key exists, if checked user is committed to at least one number even if input is 0 or NaN
-	if (array_key_exists('add_Number', $_GET) && $_GET['add_Number']== 'on') {
+	if ( isset($_GET['add_Number'])) {
 		$password .= rand(0,9);
 		# I set the checked value in its entirety, since it must be either checked='checked' or non existent
 		$addNumber = 'checked="checked"';
 		$viewNumber = 'inline';
 
 		$numbers = $_GET['number_Numbers'];
-		if ($numbers != '') {
-			if(!is_numeric($numbers)) {
-				$numberError = 'inline';
-			}
-			else if (is_numeric($numbers) && $numbers > 0) {
-				for ($i = 1; $i < $numbers; $i++) {
-					$password .= rand(0,9);		
-				}		
-			}
-
+		if(!is_numeric($numbers) || $numbers <= 0 || $numbers == '') {
+			$numberError = 'inline';
+		}
+		else {
+			for ($i = 1; $i < $numbers; $i++) {
+				$password .= rand(0,9);		
+			}		
 		}
 	}
 
 	# test to see if input is checked, if checked the user is committed to at least one symbol even if there input is 0 or NaN
-	if (array_key_exists('add_Symbol', $_GET) && $_GET['add_Symbol']== 'on') {
+	if (isset($_GET['add_Symbol'])) {
 		$password .= chr(rand(33,44));
 		# I set the checked value in its entirety, since it must be either checked='checked' or non existent
 		$addSymbol = 'checked="checked"';
 		$viewSymbol = 'inline';
 
 		$symbols = $_GET['number_Symbols'];
-		if ($symbols != '') {
-			if(!is_numeric($symbols)) {
-				$symbolError = 'inline';
-			}
-			else if (is_numeric($symbols) && $symbols > 0) {
-				for ($i = 1; $i < $symbols; $i++) {
-					$password .= chr(rand(33,44));			
-				}
+		if(!is_numeric($symbols) || $symbols <= 0 || $symbols == '') {
+			$symbolError = 'inline';
+		}
+		else {
+			for ($i = 1; $i < $symbols; $i++) {
+				$password .= chr(rand(33,44));			
 			}
 		}
 	}

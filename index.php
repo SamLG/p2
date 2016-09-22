@@ -46,24 +46,24 @@
 			<div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
 				<form action="index.php" method="GET">
 					<label for="number_Words"># of Words</label>
-					<input id="number_Words" type="text" name="number_Words" maxlength="1" value="<?php echo $numberWords?>" onblur="showWordError()">(Max 9) <em id="wordError" style="display: <?php echo $wordError?>">Not a numeric value.</em>
+					<input id="number_Words" type="text" name="number_Words" maxlength="1" value="<?php echo $numberWords?>" onblur="showError('number_Words','wordError')">(Max 9) <em id="wordError" style="display: <?php echo $wordError?>">Please input a numeric value greater than 0.</em>
 					<br>
 					<label for="chosenSymbol">Choose a separator </label>
 					<input id="chosenSymbol" type="text" name="chosenSymbol" maxlength="1" value="<?php echo $symb?>">
 					<br>
 					<label for="add_Number">Add a number </label>
-					<input id="add_Number" type="checkbox" name="add_Number" <?php echo $addNumber ?> onclick="displayHowManyNumbers()">
+					<input id="add_Number" type="checkbox" name="add_Number" <?php echo $addNumber ?> onclick="displayHowMany('add_Number','number_quantity','number_Numbers','numberError')">
 					<fieldset id="number_quantity" style="display: <?php echo $viewNumber?>;">
 						<label for="number_Numbers">How many?</label>
-						<input id="number_Numbers" type="text" name="number_Numbers" maxlength="1" value="<?php echo $numbers ?>" onblur="showNumberError()">(Max 9) <em id="numberError" style="display: <?php echo $numberError?>">Not a numeric value.</em>
+						<input id="number_Numbers" type="text" name="number_Numbers" maxlength="1" value="<?php echo $numbers ?>" onblur="showErrorRequired('number_Numbers','numberError')">(Max 9) <em id="numberError" style="display: <?php echo $numberError?>">Please input a numeric value greater than 0.</em>
 					</fieldset>
 					
 					<br>
 					<label for="add_Symbol">Add a symbol </label>
-					<input id="add_Symbol" type="checkbox" name="add_Symbol" <?php echo $addSymbol ?> onclick="displayHowManySymbols()">
+					<input id="add_Symbol" type="checkbox" name="add_Symbol" <?php echo $addSymbol ?> onclick="displayHowMany('add_Symbol','symbol_quantity','number_Symbols','symbolError')">
 					<fieldset id="symbol_quantity" style="display: <?php echo $viewSymbol ?>;">
 						<label for="number_Symbols">How many?</label>
-						<input id="number_Symbols" type="text" name="number_Symbols" maxlength="1" value="<?php echo $symbols ?>" onblur="showSymbolError()">(Max 9) <em id="symbolError" style="display: <?php echo $symbolError?>">Not a numeric value.</em>
+						<input id="number_Symbols" type="text" name="number_Symbols" maxlength="1" value="<?php echo $symbols ?>" onblur="showErrorRequired('number_Symbols','symbolError')">(Max 9) <em id="symbolError" style="display: <?php echo $symbolError?>">Please input a numeric value greater than 0.</em>
 					</fieldset>
 					
 					<br>
