@@ -38,8 +38,10 @@
 	// 	'lychees',
 	// 	'blueberries'
 	// ];
-	# initialize $password to empty string
-	$password = '';
+	/* initialize $password to message, so that before any submissions the user is indicated
+	   where the password will show up, and so that h2 doesn't start out empty, which causes
+	   a w3 validator error of 'Empty heading' */
+	$password = 'Your password will display here';
 	$numberWords = '';
 	# I initialized these variables to be empty strings so that I could set their values, if they already had input from a user. This reflects Susan's xkcd example.
 	$upper = '';
@@ -57,7 +59,14 @@
 	$symbols = '';
 	$submitError = '';
 
-	# loading the page without hitting submit, need to ensure that the key has been created before calling it
+	/* because the password was created with an initial value, if there is a form submission
+	   I need to clear that value before the password pieces are appended to it*/
+	if (isset( $_GET['submit'])) {
+		$password = '';
+	}
+
+	/* loading the page without hitting submit, need to ensure that the key has been created 
+	   before calling it */
 	if (array_key_exists('number_Words', $_GET)) {
 		$numberWords = $_GET['number_Words'];
 	}
