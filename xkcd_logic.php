@@ -6,7 +6,7 @@
 	// echo '</pre>';
 
 	# make sure that I only scrape the website once
-	if (!file_exists('list.txt') or filesize('list.txt') == 0 ) {
+	if (!file_exists('list.txt') or filesize('./list.txt') == 0 ) {
 		$filename = 'https://en.wikipedia.org/wiki/List_of_animal_names';
 		$page = file_get_contents($filename);
 		$page = preg_replace('/\s\s+/', '', $page); 
