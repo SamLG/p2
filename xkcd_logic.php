@@ -70,9 +70,15 @@
 		}
 		else {
 			for ($i = 1; $i <= $numberWords; $i++) {
-				# choose random index in wordsList array
-				$word = $wordsList[rand(0,(count($wordsList)-1))];
+				$word = '';
 
+				#just in case any of the words from the array are empty strings, make sure I get a word
+				while ($word == '') {
+					//echo 'loop #'.$i.': word was empty ... ';
+					# choose random index in wordsList array
+					$word = $wordsList[rand(0,(count($wordsList)-1))];
+				}
+				
 				# I originally adjusted the password for case out of the word selection, but moved the adjustment here for more control
 				if (array_key_exists('case', $_GET) && $_GET['case'] == 'make_Camel' && $i > 1) {
 					$word = substr_replace($word, strtoupper($word{0}), 0, 1);
